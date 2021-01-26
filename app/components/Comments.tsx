@@ -28,8 +28,12 @@ export default class Comments extends React.Component<any, {[key: string]: any}>
             const response = await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${(post_id).toString()}`);
             const json = await response.json();
             console.log('here is a comment json', json);
-            this.collectionComments = json;
-            this.setState({isLoadingComments : false, commentsData : json});
+            let collection = [];
+            for(let item of json){
+                collection.push({name : item.name, email : item.email, body : item.body});
+            }
+            this.collectionComments = collection;
+            this.setState({isLoadingComments : false, commentsData : collection});
         } catch(e){
             console.log('An error occurred either on networking side or codes side.');
             console.log(e);
@@ -92,7 +96,6 @@ export default class Comments extends React.Component<any, {[key: string]: any}>
                     <FlatList
                         data={this.state.commentsData}
                         renderItem={this.renderItem}
-                        keyExtractor={item => item.id}
                     />
                 }
             </View>
