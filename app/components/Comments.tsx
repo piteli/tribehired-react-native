@@ -68,7 +68,7 @@ export default class Comments extends React.Component<any, {[key: string]: any}>
             <View style={styles.containerUser}>
                 <Image source={{uri : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPluX0lZs9ujZ8Uy1NNi6blJzh3_0en13QfA&usqp=CAU'}} />
                 <View style={styles.containerSubUser}>
-                    <Text>{item.name} {`<${item.email}>`}</Text>
+                    <Text style={{fontSize : 15, fontWeight : 'bold', marginBottom : 10}}>{item.name} {`<${item.email}>`}</Text>
                     <Text>{item.body}</Text>
                 </View>
             </View>
@@ -112,7 +112,8 @@ const styles = StyleSheet.create({
     },
     containerSubUser : {
         flex : 1,
-        flexDirection : 'column'
+        flexDirection : 'column',
+        padding : 10
     },
     containerLoading : {
         flexDirection : 'column',
