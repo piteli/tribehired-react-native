@@ -48,10 +48,15 @@ export default class Comments extends React.Component<any, {[key: string]: any}>
         let collection = [];
         const data = this.collectionComments;
 
-        if(value === '') return;
+        if(value === ''){
+            this.setState({commentsData : this.collectionComments}); return;
+        }
         for(let item of data){
             for(let key in item){
-                if((item[key]).indexOf(value) > -1) collection.push(item); continue;
+                console.log(item);
+                console.log('lala');
+                console.log(item[key]);
+                if(((item[key]).toString()).indexOf(value) > -1) collection.push(item); continue;
             }
         }
         console.log(this.collectionComments);

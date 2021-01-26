@@ -48,7 +48,7 @@ export default class Posts extends React.Component<any, {[key: string]: any}> {
     }
 
     onClickPost = (id : number, image_url : string) => {
-        this.props.navigation.navigate('post', {id, bannerImage : image_url});
+        this.props.navigation.navigate('Post', {id, bannerImage : image_url});
     }
 
     renderItem = ({ item } : any) => {
@@ -56,8 +56,8 @@ export default class Posts extends React.Component<any, {[key: string]: any}> {
         return (
             <TouchableOpacity onPress={() => this.onClickPost(item.id, image_url)}>
                 <Image source={{uri : image_url}} style={styles.banner} />
-                <View>
-                    <Text>{item.title}</Text>
+                <View style={{padding : 10}}>
+                    <Text style={{fontSize : 20, fontWeight : 'bold', marginBottom : 10}}>{item.title}</Text>
                     <Text>{item.body}</Text>
                 </View>
             </TouchableOpacity>
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     container : {
         flex : 1,
         flexDirection : 'column',
-        padding : 10
+        padding : 10,
     },
     banner : {
         height : 200,
